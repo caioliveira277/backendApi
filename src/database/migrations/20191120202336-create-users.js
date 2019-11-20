@@ -36,11 +36,17 @@ module.exports = {
         type: 'CHAR(90)',
       },
       isActive: {
-        allowNull:    false,
+        allowNull: false,
         defaultValue: false,
         type: 'BOOLEAN',
-      }
-
+      },
+      id_Address: {
+        allowNull: false,
+        type: DataTypes.INTEGER,
+        references: { model: 'addresses', key: 'id'},
+        onUpdate: 'CASCADE',
+        onDelete: 'RESTRICT',
+      },
     });
   },
 
