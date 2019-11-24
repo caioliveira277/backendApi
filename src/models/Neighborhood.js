@@ -9,6 +9,12 @@ class Neighborhood extends Model {
       modelName: 'neighborhoods'
     })
   }
+  static associate(models) {
+    this.hasOne(models.addresses, {
+      foreignKey: "id_neighborhood",
+      as: "neighborhoods"
+    })
+  }
 }
 
 module.exports = Neighborhood;

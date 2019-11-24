@@ -3,29 +3,33 @@ const { Model, DataTypes } = require('sequelize')
 class Address extends Model {
   static init(sequelize) {
     super.init({
-      zipcode: 'CHAR(8)',
-      number: 'CHAR(15)',
+      zipcode: DataTypes.CHAR,
+      number: DataTypes.CHAR,
       street: DataTypes.STRING,
       complement: DataTypes.STRING,
       createdAt: DataTypes.DATE,
       updatedAt: DataTypes.DATE,
     }, {
       sequelize,
-      modelName: 'addresses'
+      modelName: "addresses"
     })
   }
   static associate(models) {
-    this.belongsTo(models.cities, { 
+    this.belongsTo(models.cities, {
       foreignKey: "id_city",
-      as: "city" 
+      as: "cities"
     })
-    this.belongsTo(models.neighborhoods, { 
+    this.belongsTo(models.neighborhoods, {
       foreignKey: "id_neighborhood",
-      as: "neighborhood" 
+      as: "neighborhoods"
     })
-    this.belongsTo(models.states, { 
+    this.belongsTo(models.states, {
       foreignKey: "id_state",
-      as: "state" 
+      as: "states"
+    })
+    this.hasOne(models.users, {
+      foreignKey: "id_address",
+      as: "address"
     })
   }
 }

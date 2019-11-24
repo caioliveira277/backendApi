@@ -33,7 +33,14 @@ module.exports = {
         return res.json(addressesAll)
     },
     async select(req, res) {
-        const addresses = await Address.findByPk(req.params.id);
+        const addresses = await Address.findByPk(req.params.id, {
+            attributes: ["zipcode","number","street","complement","updatedAt"],
+            include: [
+                {association: "cities"},
+                {association: "states"},
+                {association: "neighborhoods"},
+            ]
+        });
 
         return res.json(addresses)
     },
@@ -48,7 +55,7 @@ module.exports = {
             street,
             complement
         } = req.body;
-        const addressesUpdate = await Address.update({
+        await Address.update({
             id_city,
             id_neighborhood,
             id_state,

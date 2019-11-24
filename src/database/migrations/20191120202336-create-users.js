@@ -33,7 +33,7 @@ module.exports = {
       },
       password: {
         allowNull: false,
-        type: 'CHAR(90)',
+        type: 'CHAR(60)',
       },
       isActive: {
         allowNull: false,

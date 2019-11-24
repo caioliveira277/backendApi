@@ -9,6 +9,12 @@ class City extends Model {
       modelName: 'cities'
     })
   }
+  static associate(models) {
+    this.hasOne(models.addresses, {
+      foreignKey: "id_city",
+      as: "cities"
+    })
+  }
 }
 
 module.exports = City;

@@ -23,7 +23,18 @@ module.exports = {
         return res.json(userAll)
     },
     async select(req, res) {
-        const userSelect = await User.findByPk(req.params.id);
+        const userSelect = await User.findByPk(req.params.id, {
+            include: [
+                {
+                    association: 'address', include: [
+                        { association: 'cities' },
+                        { association: 'neighborhoods' },
+                        { association: 'states' }
+                    ],
+                    attributes: ["zipcode","number","street","complement","updatedAt"]
+                }
+            ]
+        });
 
         return res.json(userSelect)
     },
@@ -31,10 +42,9 @@ module.exports = {
     async update(req, res) {
         const { name, email, password, username, id_address } = req.body;
         await User.update(
-            { name, email, password, username, updatedAt: sequelize.fn('NOW'), id_address },
-            {
-                where: { id: req.params.id }
-            })
+            { name, email, password, username, id_address, updatedAt: sequelize.fn('NOW') },
+            { where: { id: req.params.id }
+        })
 
         return res.json(true);
     },
@@ -42,9 +52,8 @@ module.exports = {
     async delete(req, res) {
         await User.update(
             { isActive: false, updatedAt: sequelize.fn('NOW') },
-            {
-                where: { id: req.params.id }
-            })
+            { where: { id: req.params.id }
+        })
 
         return res.json(true);
     },

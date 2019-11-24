@@ -16,5 +16,9 @@ Neighborhood.init(connection);
 Address.init(connection);
 
 Address.associate(connection.models);
+User.associate(connection.models);
+City.associate(connection.models);
+Neighborhood.associate(connection.models);
+State.associate(connection.models);
 
 module.exports = connection;
