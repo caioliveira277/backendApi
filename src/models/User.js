@@ -7,6 +7,10 @@ class User extends Model {
       email: DataTypes.STRING,
       username: DataTypes.STRING,
       password: DataTypes.CHAR,
+      id_address: DataTypes.INTEGER,
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE,
+      isActive: DataTypes.BOOLEAN,
     }, {
       sequelize,
       modelName: 'users'

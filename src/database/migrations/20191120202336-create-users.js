@@ -40,8 +40,8 @@ module.exports = {
         defaultValue: false,
         type: 'BOOLEAN',
       },
-      id_Address: {
-        allowNull: false,
+      id_address: {
+        allowNull: true,
         type: DataTypes.INTEGER,
         references: { model: 'addresses', key: 'id'},
         onUpdate: 'CASCADE',

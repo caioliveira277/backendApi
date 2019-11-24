@@ -1,8 +1,8 @@
 const express = require('express');
-const routes = require('./routes');
+const routes = require('../routes');
 const app = express();
 
-require('./database');
+require('../database');
 
 // app.use(express.urlencoded({ extended: false }));
 

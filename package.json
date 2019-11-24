@@ -4,7 +4,7 @@
   "description": "Node js",
   "main": "index.js",
   "scripts": {
-    "server": "node src/server.js"
+    "server": "node src/bin/server.js"
   },
   "repository": {
     "type": "git",

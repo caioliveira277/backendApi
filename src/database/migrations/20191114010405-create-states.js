@@ -13,6 +13,10 @@ module.exports = {
         allowNull: false,
         type: DataTypes.STRING,
       },
+      initials: {
+        allowNull: false,
+        type: DataTypes.STRING,
+      },
     });
   },
 

@@ -6,6 +6,6 @@ module.exports = {
   dialect: 'postgres',
   timezone: '00:00',
   define: {
-    timestamps: true,
+    timestamps: false,
   }
 }
