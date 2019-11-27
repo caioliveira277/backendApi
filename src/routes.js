@@ -19,27 +19,27 @@ routes.get('/', (req, res) => {
 routes.get('/authenticate', AuthenticateController.authenticate);
 routes.use(authMiddleware)
 
-routes.post('/users', UserController.insert);
-routes.get('/users', UserController.selectAll);
-routes.get('/users/:id', UserController.select);
-routes.put('/users/:id', UserController.update);
-routes.delete('/users/:id', UserController.delete);
+routes.post('/api/users', UserController.insert);
+routes.get('/api/users', UserController.selectAll);
+routes.get('/api/users/:id', UserController.select);
+routes.put('/api/users/:id', UserController.update);
+routes.delete('/api/users/:id', UserController.delete);
 
-routes.post('/cities', CityController.insert);
-routes.get('/cities', CityController.selectAll);
-routes.get('/cities/:id', CityController.select);
+routes.post('/api/cities', CityController.insert);
+routes.get('/api/cities', CityController.selectAll);
+routes.get('/api/cities/:id', CityController.select);
 
-routes.post('/states', StateController.insert);
-routes.get('/states', StateController.selectAll);
-routes.get('/states/:id', StateController.select);
+routes.post('/api/states', StateController.insert);
+routes.get('/api/states', StateController.selectAll);
+routes.get('/api/states/:id', StateController.select);
 
-routes.post('/neighborhoods', NeighborhoodController.insert);
-routes.get('/neighborhoods', NeighborhoodController.selectAll);
-routes.get('/neighborhoods/:id', NeighborhoodController.select);
+routes.post('/api/neighborhoods', NeighborhoodController.insert);
+routes.get('/api/neighborhoods', NeighborhoodController.selectAll);
+routes.get('/api/neighborhoods/:id', NeighborhoodController.select);
 
-routes.post('/addresses', AddressController.insert);
-routes.get('/addresses', AddressController.selectAll);
-routes.get('/addresses/:id', AddressController.select);
-routes.put('/addresses/:id', AddressController.update);
+routes.post('/api/addresses', AddressController.insert);
+routes.get('/api/addresses', AddressController.selectAll);
+routes.get('/api/addresses/:id', AddressController.select);
+routes.put('/api/addresses/:id', AddressController.update);
 
 module.exports = routes;
