@@ -8,4 +8,4 @@ Sequelize, sequelize-cli (
     npx sequelize db:migrate:undo
     npx sequelize-cli db:migrate:undo:all --to XXXXX-create-posts.js  #XX = name migration
     ```
-) ##commands
+)
