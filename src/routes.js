@@ -1,9 +1,11 @@
 const express = require('express');
 const UserController = require('./controllers/UserController');
+const AuthenticateController = require('./controllers/AuthenticateController');
 const CityController = require('./controllers/CityController');
 const StateController = require('./controllers/StateController');
 const NeighborhoodController = require('./controllers/NeighborhoodController');
 const AddressController = require('./controllers/AddressController');
+const authMiddleware = require('./middleware/auth');
 
 const routes = express.Router();
 
@@ -13,6 +15,9 @@ routes.get('/', (req, res) => {
     version: "0.0.1"
   });
 });
+
+routes.get('/authenticate', AuthenticateController.authenticate);
+routes.use(authMiddleware)
 
 routes.post('/users', UserController.insert);
 routes.get('/users', UserController.selectAll);

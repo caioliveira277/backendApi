@@ -29,6 +29,7 @@ module.exports = {
       },
       username: {
         allowNull: false,
+        unique: true,
         type: DataTypes.STRING,
       },
       password: {
