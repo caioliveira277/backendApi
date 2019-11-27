@@ -9,14 +9,14 @@ const authMiddleware = require('./middleware/auth');
 
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
+routes.get('/api', (req, res) => {
   res.send({
     title: "Node API",
     version: "0.0.1"
   });
 });
 
-routes.get('/authenticate', AuthenticateController.authenticate);
+routes.get('/api/authenticate', AuthenticateController.authenticate);
 routes.use(authMiddleware)
 
 routes.post('/api/users', UserController.insert);
