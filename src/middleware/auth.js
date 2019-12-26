@@ -1,32 +1,26 @@
-const token = require('jsonwebtoken');
-const authConfig = require('../config/auth');
+const token = require("jsonwebtoken");
+const authConfig = require("../config/auth");
 
 module.exports = (req, res, next) => {
-    const authHeader = req.headers.authorization;
-    try {
-        if(!authHeader)
-            throw "No token provided";
-            
-        const parts = authHeader.split(' ');
+  const authHeader = req.headers.authorization;
+  try {
+    if (!authHeader) throw "No token provided";
 
-        if(!parts.lengh === 2)
-            throw "Token error";
-            
-            const [ scheme, webtoken ] = parts;
-            
-        if(!/^Bearer$/i.test(scheme))
-            throw "Invalid format token";
+    const parts = authHeader.split(" ");
 
-        token.verify(webtoken, authConfig.secret, (error, decoded) => {
-            if(error)
-                throw "Invalid token";
+    if (!parts.lengh === 2) throw "Token error";
 
-            req.id = decoded.id;
-            return next();
-        })
+    const [scheme, webtoken] = parts;
 
-    } catch (error) {
-        return res.status(401).json(error)
-    }
+    if (!/^Bearer$/i.test(scheme)) throw "Invalid format token";
 
-}
+    token.verify(webtoken, authConfig.secret, (error, decoded) => {
+      if (error) throw "Invalid token";
+
+      req.id = decoded.id;
+      return next();
+    });
+  } catch (error) {
+    return res.status(401).json(error);
+  }
+};

@@ -16,7 +16,7 @@ routes.get('/api', (req, res) => {
   });
 });
 
-routes.get('/api/authenticate', AuthenticateController.authenticate);
+routes.post('/api/authenticate', AuthenticateController.authenticate);
 routes.use(authMiddleware)
 
 routes.post('/api/users', UserController.insert);

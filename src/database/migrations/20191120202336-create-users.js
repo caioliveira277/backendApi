@@ -41,6 +41,27 @@ module.exports = {
         defaultValue: false,
         type: 'BOOLEAN',
       },
+      cpf: {
+        allowNull: false,
+        unique: true,
+        type: 'CHAR(11)',
+      },
+      dateOfBirth: {
+        allowNull: true,
+        type: DataTypes.DATE,
+      },
+      cellPhone: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      telphone: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
+      userImage: {
+        allowNull: true,
+        type: DataTypes.STRING,
+      },
       id_address: {
         allowNull: true,
         type: DataTypes.INTEGER,
