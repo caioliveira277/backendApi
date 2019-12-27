@@ -3,13 +3,27 @@ const sequelize = require("sequelize");
 
 module.exports = {
   async insert(req, res) {
-    const { name, email, password, id_address, username } = req.body;
+    const {
+      name,
+      email,
+      password,
+      id_address,
+      username,
+      cpf,
+      dateOfBirth,
+      cellPhone,
+      telephone
+    } = req.body;
     const userInsert = await User.create({
       name,
       email,
       password,
       id_address,
       username,
+      cpf,
+      dateOfBirth,
+      cellPhone,
+      telephone,
       createdAt: sequelize.fn("NOW"),
       updatedAt: sequelize.fn("NOW")
     });
@@ -25,6 +39,10 @@ module.exports = {
         "email",
         "createdAt",
         "updatedAt",
+        "cpf",
+        "dateOfBirth",
+        "cellPhone",
+        "telephone",
         "isActive",
         "id_address"
       ]
@@ -34,7 +52,7 @@ module.exports = {
   },
   async select(req, res) {
     let id = req.params.id;
-    if(id === "true"){
+    if (id === "true") {
       id = req.id;
     }
     const userSelect = await User.findByPk(id, {
@@ -42,6 +60,12 @@ module.exports = {
         "name",
         "username",
         "email",
+        "createdAt",
+        "updatedAt",
+        "cpf",
+        "cellPhone",
+        "telephone",
+        "dateOfBirth",
         "createdAt",
         "updatedAt",
         "isActive",
@@ -64,13 +88,29 @@ module.exports = {
   },
 
   async update(req, res) {
-    const { name, email, password, username, id_address } = req.body;
+    const {
+      name,
+      email,
+      password,
+      username,
+      id_address,
+      cpf,
+      cellPhone,
+      telephone,
+      dateOfBirth, 
+      isActive
+    } = req.body;
     await User.update(
       {
         name,
         email,
         password,
         username,
+        cpf,
+        cellPhone,
+        telephone,
+        dateOfBirth,
+        isActive,
         id_address,
         updatedAt: sequelize.fn("NOW")
       },

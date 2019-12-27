@@ -48,17 +48,13 @@ module.exports = {
       },
       dateOfBirth: {
         allowNull: true,
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
       },
       cellPhone: {
         allowNull: true,
         type: DataTypes.STRING,
       },
-      telphone: {
-        allowNull: true,
-        type: DataTypes.STRING,
-      },
-      userImage: {
+      telephone: {
         allowNull: true,
         type: DataTypes.STRING,
       },
