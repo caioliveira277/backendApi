@@ -36,7 +36,7 @@ module.exports = {
       },
       number: {
         allowNull: true,
-        type: 'CHAR(15)',
+        type: DataTypes.STRING,
       },
       street: {
         allowNull: true,

@@ -1,21 +1,14 @@
 const City = require("../models/City");
 
 module.exports = {
-  async insert(req, res) {
-    const { city } = req.body;
-    const citiesInsert = await City.create({ city });
+  async selectInsert(req, res) {
+    try {
+      const { city } = req.body;
+      const cities = await City.findOrCreate({ where: { city } });
 
-    return res.json(citiesInsert);
-  },
-
-  async selectAll(req, res) {
-    const citiesAll = await City.findAll();
-
-    return res.json(citiesAll);
-  },
-  async select(req, res) {
-    const cities = await City.findByPk(req.params.id);
-
-    return res.json(cities);
+      return res.status(200).json(cities);
+    } catch (error) {
+      return res.status(400).json(error.errors[0].message);
+    }
   }
 };

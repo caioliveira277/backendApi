@@ -1,23 +1,14 @@
 const State = require("../models/State");
 
 module.exports = {
-  async insert(req, res) {
-    const { state, initials } = req.body;
-    console.log(state);
+  async selectInsert(req, res) {
+    try {
+      const { state } = req.body;
+      const states = await State.findOrCreate({ where: { state } });
 
-    const statesInsert = await State.create({ state, initials });
-
-    return res.json(statesInsert);
-  },
-
-  async selectAll(req, res) {
-    const statesAll = await State.findAll();
-
-    return res.json(statesAll);
-  },
-  async select(req, res) {
-    const states = await State.findByPk(req.params.id);
-
-    return res.json(states);
+      return res.status(200).json(states);
+    } catch (error) {
+      return res.status(400).json(error.errors[0].message);
+    }
   }
 };

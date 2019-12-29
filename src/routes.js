@@ -25,20 +25,11 @@ routes.get('/api/users/:id', UserController.select);
 routes.put('/api/users/:id', UserController.update);
 routes.delete('/api/users/:id', UserController.delete);
 
-routes.post('/api/cities', CityController.insert);
-routes.get('/api/cities', CityController.selectAll);
-routes.get('/api/cities/:id', CityController.select);
-
-routes.post('/api/states', StateController.insert);
-routes.get('/api/states', StateController.selectAll);
-routes.get('/api/states/:id', StateController.select);
-
-routes.post('/api/neighborhoods', NeighborhoodController.insert);
-routes.get('/api/neighborhoods', NeighborhoodController.selectAll);
-routes.get('/api/neighborhoods/:id', NeighborhoodController.select);
+routes.post('/api/cities', CityController.selectInsert);
+routes.post('/api/states', StateController.selectInsert);
+routes.post('/api/neighborhoods', NeighborhoodController.selectInsert);
 
 routes.post('/api/addresses', AddressController.insert);
-routes.get('/api/addresses', AddressController.selectAll);
 routes.get('/api/addresses/:id', AddressController.select);
 routes.put('/api/addresses/:id', AddressController.update);
 

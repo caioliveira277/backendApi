@@ -18,8 +18,7 @@ module.exports = {
         type: DataTypes.DATE,
       },
       name: {
-        allowNull: true,
-        defaultValue: null,
+        allowNull: false,
         type: DataTypes.STRING,
       },
       email: {
@@ -57,6 +56,11 @@ module.exports = {
       telephone: {
         allowNull: true,
         type: DataTypes.STRING,
+      },
+      type: {
+        allowNull: false,
+        defaultValue: 2,
+        type: DataTypes.SMALLINT,
       },
       id_address: {
         allowNull: true,

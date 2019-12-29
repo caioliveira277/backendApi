@@ -1,21 +1,14 @@
 const Neighborhood = require("../models/Neighborhood");
 
 module.exports = {
-  async insert(req, res) {
-    const { neighborhood } = req.body;
-    const neighborhoodsInsert = await Neighborhood.create({ neighborhood });
+  async selectInsert(req, res) {
+    try {
+      const { neighborhood } = req.body;
+      const neighborhoods = await Neighborhood.findOrCreate({ where: { neighborhood } });
 
-    return res.json(neighborhoodsInsert);
-  },
-
-  async selectAll(req, res) {
-    const neighborhoodAll = await Neighborhood.findAll();
-
-    return res.json(neighborhoodAll);
-  },
-  async select(req, res) {
-    const neighborhoods = await Neighborhood.findByPk(req.params.id);
-
-    return res.json(neighborhoods);
+      return res.status(200).json(neighborhoods);
+    } catch (error) {
+      return res.status(400).json(error.errors[0].message);
+    }
   }
 };
