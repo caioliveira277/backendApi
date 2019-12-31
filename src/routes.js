@@ -10,7 +10,7 @@ const authMiddleware = require('./middleware/auth');
 const routes = express.Router();
 
 routes.get('/api', (req, res) => {
-  res.send({
+  res.json({
     title: "Node API",
     version: "0.0.1"
   });

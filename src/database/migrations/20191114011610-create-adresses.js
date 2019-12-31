@@ -40,10 +40,12 @@ module.exports = {
       },
       street: {
         allowNull: true,
+        defaultValue: "",
         type: DataTypes.STRING,
       },
       complement: {
         allowNull: true,
+        defaultValue: "",
         type: DataTypes.STRING,
       },
       createdAt: {
