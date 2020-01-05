@@ -60,6 +60,7 @@ module.exports = {
     }
     const userSelect = await User.findByPk(id, {
       attributes: [
+        "id",
         "name",
         "username",
         "email",
@@ -84,6 +85,12 @@ module.exports = {
             { association: "states" }
           ],
           attributes: ["zipcode", "number", "street", "complement", "updatedAt"]
+        },
+        {
+          association: "gallery",
+          attributes: ["id","key"],
+          where: {type: "profile"},
+          required: false
         }
       ]
     });

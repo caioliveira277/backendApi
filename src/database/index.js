@@ -6,6 +6,7 @@ const City = require("../models/City");
 const State = require("../models/State");
 const Neighborhood = require("../models/Neighborhood");
 const Address = require("../models/Address");
+const Gallery = require("../models/Gallery");
 
 const connection = new Sequelize(dbConfig);
 
@@ -14,11 +15,13 @@ City.init(connection);
 State.init(connection);
 Neighborhood.init(connection);
 Address.init(connection);
+Gallery.init(connection);
 
 Address.associate(connection.models);
 User.associate(connection.models);
 City.associate(connection.models);
 Neighborhood.associate(connection.models);
 State.associate(connection.models);
+Gallery.associate(connection.models);
 
 module.exports = connection;

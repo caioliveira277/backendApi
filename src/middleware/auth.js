@@ -1,5 +1,4 @@
 const token = require("jsonwebtoken");
-const authConfig = require("../config/auth");
 
 module.exports = (req, res, next) => {
   const authHeader = req.headers.authorization;
@@ -14,7 +13,7 @@ module.exports = (req, res, next) => {
 
     if (!/^Bearer$/i.test(scheme)) throw "Invalid format token";
 
-    token.verify(webtoken, authConfig.secret, (error, decoded) => {
+    token.verify(webtoken, process.env.SECRET_KEY, (error, decoded) => {
       if (error) throw "Invalid token";
 
       req.id = decoded.id;

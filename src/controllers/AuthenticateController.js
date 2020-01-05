@@ -1,7 +1,6 @@
 const Authenticate = require("../models/User");
 const bcrypt = require("bcryptjs");
 const token = require("jsonwebtoken");
-const authConfig = require("../config/auth");
 
 module.exports = {
   async authenticate(req, res) {
@@ -9,7 +8,7 @@ module.exports = {
       const { username, password } = req.body;
       const user = await Authenticate.findOne({
         attributes: ["password", "id", "name"],
-        where: { username: username }
+        where: { username, isActive: true }
       });
 
       if (!user)
@@ -18,7 +17,7 @@ module.exports = {
       if (!(await bcrypt.compare(password, user.password)))
         throw "Senha inválida";
 
-      const webtoken = token.sign({ id: user.id }, authConfig.secret, {
+      const webtoken = token.sign({ id: user.id }, process.env.SECRET_KEY, {
         expiresIn: 86400
       });
 

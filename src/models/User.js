@@ -89,6 +89,10 @@ class User extends Model {
       foreignKey: "id_address",
       as: "address"
     });
+    this.hasOne(models.gallery, {
+      foreignKey: "id_user",
+      as: "gallery"
+    });
   }
 }
 module.exports = User;

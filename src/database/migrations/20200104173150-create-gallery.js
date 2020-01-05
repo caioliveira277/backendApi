@@ -10,7 +10,7 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       id_user: {
-        allowNull: false,
+        allowNull: true,
         type: DataTypes.INTEGER,
         references: { model: "users", key: "id" },
         onUpdate: "CASCADE",

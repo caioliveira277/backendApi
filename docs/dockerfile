@@ -1,0 +1,10 @@
+sudo docker run --name postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=nopass -e POSTGRES_DB=db_bombocado -p 5432:5432 -d postgres
+
+sudo docker exec -it postgress /bin/bash
+
+sudo docker network create postgres-network
+
+sudo docker run --name postgres --network=postgres-network -e "POSTGRES_PASSWORD=nopass" -p 5432:5432 -v /home/xeon/Documents/postgres:/var/lib/postgresql/data -d postgres
+
+
+sudo docker run --name pgadmin4 --network=postgres-network -p 15432:80 -e "PGADMIN_DEFAULT_EMAIL=caio-henrique123@live.com" -e "PGADMIN_DEFAULT_PASSWORD=nopass" -d dpage/pgadmin4
