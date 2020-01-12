@@ -61,9 +61,12 @@ class User extends Model {
             msg: "CPF já cadastrado!"
           }
         },
+        type: {
+          type: DataTypes.ENUM,
+          values: ["Administrador", "Cliente"],
+        },
         cellPhone: DataTypes.STRING,
         telephone: DataTypes.STRING,
-        type: DataTypes.TINYINT,
         dateOfBirth: DataTypes.DATEONLY,
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,

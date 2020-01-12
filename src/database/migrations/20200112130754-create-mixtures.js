@@ -10,11 +10,11 @@ module.exports = {
         type: DataTypes.INTEGER
       },
       name: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       ingredients: {
-        type: Datatypes.TEXT,
+        type: DataTypes.TEXT,
         defaultValue: "Não informado"
       },
       createdAt: {

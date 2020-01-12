@@ -59,8 +59,9 @@ module.exports = {
       },
       type: {
         allowNull: false,
-        defaultValue: 2,
-        type: DataTypes.SMALLINT,
+        type: DataTypes.ENUM({
+          values: ["Administrador","Cliente"]
+        }),
       },
       id_address: {
         allowNull: true,
