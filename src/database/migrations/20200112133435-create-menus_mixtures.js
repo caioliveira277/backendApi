@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-  up: (queryInterface, Datatypes) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable("menus_mixtures", {
       id_menu: {
         allowNull: true,

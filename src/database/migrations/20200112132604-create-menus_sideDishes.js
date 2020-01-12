@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-  up: (queryInterface, Datetypes) => {
+  up: (queryInterface, DataTypes) => {
     return queryInterface.createTable("menus_sideDishes", {
       id_menu: {
         allowNull: true,
