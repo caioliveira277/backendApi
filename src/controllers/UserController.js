@@ -100,7 +100,7 @@ module.exports = {
 
   async update(req, res) {
     try {
-      let id = req.params.id;
+      var id = req.params.id;
       if (id === "true") id = req.id;
       const {
         name,

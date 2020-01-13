@@ -9,7 +9,7 @@ class User extends Model {
           type: DataTypes.STRING,
           validate: {
             len: {
-              args: [4, 200],
+              args: [4, 255],
               msg: "Informe somente o seu nome e sobrenome"
             }
           }
@@ -92,7 +92,7 @@ class User extends Model {
       foreignKey: "id_address",
       as: "address"
     });
-    this.hasOne(models.gallery, {
+    this.hasMany(models.gallery, {
       foreignKey: "id_user",
       as: "gallery"
     });

@@ -8,7 +8,7 @@ class Gallery extends Model {
           type: DataTypes.STRING,
           validate: {
             len: {
-              args: [4, 200],
+              args: [4, 255],
               msg: "O nome da imagem ultrapassa o limite"
             }
           }
@@ -18,7 +18,7 @@ class Gallery extends Model {
           type: DataTypes.STRING,
           validate: {
             len: {
-              args: [4, 250],
+              args: [4, 255],
               msg: "O nome da imagem ultrapassa o limite"
             }
           }
