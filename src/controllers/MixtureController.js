@@ -18,7 +18,9 @@ module.exports = {
   },
   async selectAll(req, res) {
     try {
-      mixtureSelectAll = await Mixture.findAll();
+      mixtureSelectAll = await Mixture.findAll({
+        attributes: [["name", "label"], "id", "ingredients"]
+      });
       return res.status(200).json(mixtureSelectAll);
     } catch (error) {
       return res.status(400).json(error.message);

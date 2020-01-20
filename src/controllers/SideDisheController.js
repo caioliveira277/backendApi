@@ -18,7 +18,9 @@ module.exports = {
   },
   async selectAll(req, res) {
     try {
-      sideDisheSelectAll = await SideDishe.findAll();
+      sideDisheSelectAll = await SideDishe.findAll({
+        attributes: [["name", "label"], "id", "ingredients"]
+      });
       return res.status(200).json(sideDisheSelectAll);
     } catch (error) {
       return res.status(400).json(error.message);

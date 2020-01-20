@@ -126,7 +126,6 @@ module.exports = {
           cellPhone,
           telephone,
           dateOfBirth,
-          isActive,
           id_address,
           updatedAt: sequelize.fn("NOW")
         },
@@ -135,6 +134,7 @@ module.exports = {
       return res.status(200).json(true);
     } catch (error) {
       return res.status(400).json(error.errors[0].message);
+      console.log(error)
     }
   },
 

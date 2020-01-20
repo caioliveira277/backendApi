@@ -12,6 +12,11 @@ module.exports = {
       dateOfPublication: {
         type: DataTypes.DATEONLY,
         allowNull: false,
+        unique: true
+      },
+      description: {
+        allowNull: true,
+        type: DataTypes.STRING,
       }
     });
   },

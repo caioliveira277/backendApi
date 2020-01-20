@@ -5,10 +5,31 @@ const SideDishe = require("../models/SideDishe");
 module.exports = {
   async insert(req, res) {
     try {
-      const { dateOfPublication } = req.body;
+      const {
+        dateOfPublication,
+        description,
+        id_mixtures,
+        id_sideDishes
+      } = req.body;
       menuInsert = await Menu.create({
-        dateOfPublication
+        dateOfPublication,
+        description
       });
+
+      if (id_mixtures.length) {
+        for (var data in id_mixtures) {
+          var mixtures = await Mixture.findByPk(id_mixtures[data]);
+          await menuInsert.addMenu_mixture(mixtures);
+        }
+      }
+
+      if (id_sideDishes.length) {
+        for (let data in id_sideDishes) {
+          var sideDishes = await SideDishe.findByPk(id_sideDishes[data]);
+          await menuInsert.addMenu_sideDishe(sideDishes);
+        }
+      }
+
       return res.status(200).json(menuInsert);
     } catch (error) {
       return res.status(400).json(error.message);
@@ -64,6 +85,32 @@ module.exports = {
         ]
       });
       return res.status(200).json(selectMenu);
+    } catch (error) {
+      return res.status(400).json(error.message);
+    }
+  },
+  async selectAll(req, res) {
+    try {
+      const { weekly } = req.query;
+      var where = {};
+      // if (weekly) where = { id: 8 };
+
+      menuAll = await Menu.findAll({
+        include: [
+          {
+            association: "menu_mixture",
+            attributes: ["id", "name", "ingredients"],
+            through: { attributes: [] }
+          },
+          {
+            association: "menu_sideDishe",
+            attributes: ["id", "name", "ingredients"],
+            through: { attributes: [] }
+          }
+        ],
+        where: where
+      });
+      return res.status(200).json(menuAll);
     } catch (error) {
       return res.status(400).json(error.message);
     }

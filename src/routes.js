@@ -40,6 +40,7 @@ routes.get("/api/addresses/:id", AddressController.select);
 routes.put("/api/addresses/:id", AddressController.update);
 
 routes.get("/api/menus/:id", MenuController.select);
+routes.get("/api/menus", MenuController.selectAll);
 routes.post("/api/menus", MenuController.insert);
 
 routes.post("/api/menus/mixtures/:id", MenuController.menu_mixture);
